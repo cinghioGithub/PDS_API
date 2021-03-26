@@ -9,13 +9,15 @@
 long Message::messageNumber = 0;
 
 //costruttore di default
-Message::Message(): id(-1), size(0), data((char *)"") {
-    std::cout << "Message::defualt constructor" << std::endl;
+Message::Message(): id(-1), size(0) {
+    //std::cout << "Message::defualt constructor" << std::endl;
+    messageNumber++;
+    this->data = mkMessage(0);
 }
 
 //coustruttore
 Message::Message(int n): size(n) {
-    std::cout << "Message::constructor" << std::endl;
+    //std::cout << "Message::constructor" << std::endl;
     this->id = messageNumber;
     messageNumber++;
     this->data = mkMessage(this->size);
@@ -23,7 +25,7 @@ Message::Message(int n): size(n) {
 
 //costruttore di copia
 Message::Message(const Message& source) {
-    std::cout << "Message::copy constructor" << std::endl;
+    //std::cout << "Message::copy constructor" << std::endl;
     this->size = source.size;
     this->id = source.id;
     this->data = new char[source.size + 1];
@@ -35,16 +37,43 @@ Message::Message(const Message& source) {
 
 //costruttore di movimento
 Message::Message(Message&& source) {
-    std::cout << "Message::movement constructor" << std::endl;
+    //std::cout << "Message::movement constructor" << std::endl;
     this->size = source.size;
     this->id = source.id;
     this->data = source.data;
-    source.data = nullptr;
+    source.data = NULL;
+}
+
+//operatore di asseganzione
+Message& Message::operator=(const Message& source){
+    //std::cout << "Message::assegnation operator" << std::endl;
+    if(this!=&source){
+        delete[] this->data;
+        this->data = NULL;
+        this->size = source.size;
+        this->id = source.id;
+        this->data = new char[source.size + 1];
+        memcpy(this->data, source.data, this->size + 1);
+    }
+    return *this;
+}
+
+//opearatore di assegnazione per movimento
+Message& Message::operator=(Message&& source){
+    //std::cout << "Message::assegnation operator (movement)" << std::endl;
+    if(this!=&source){
+        delete[] this->data;
+        this->data = source.data;
+        this->size = source.size;
+        this->id = source.id;
+        source.data = NULL;
+    }
+    return *this;
 }
 
 //distruttore
 Message::~Message(){
-    std::cout << "Message::distructor" << std::endl;
+    //std::cout << "Message::distructor" << " " << this->id << std::endl;
     delete[] this->data;
 }
 

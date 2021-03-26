@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/DurationLogger.cpp" "/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/cmake-build-debug/CMakeFiles/lab_01.dir/DurationLogger.cpp.o"
   "/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/Message.cpp" "/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/cmake-build-debug/CMakeFiles/lab_01.dir/Message.cpp.o"
   "/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/main.cpp" "/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/cmake-build-debug/CMakeFiles/lab_01.dir/main.cpp.o"
   )

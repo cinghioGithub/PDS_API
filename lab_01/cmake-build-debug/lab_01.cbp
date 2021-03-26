@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/DurationLogger.cpp">
+			<Option target="lab_01"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/DurationLogger.h">
+			<Option target="lab_01"/>
+		</Unit>
 		<Unit filename="/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/Message.cpp">
 			<Option target="lab_01"/>
 		</Unit>

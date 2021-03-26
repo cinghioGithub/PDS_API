@@ -13,11 +13,21 @@ class Message {
     int size;
 
 public:
+    //costruttore di dafault
     Message();
+    //costruttore
     Message(int n);
+    //costruttore di copia
     Message(const Message& source);
+    //costruttore di movimento
     Message(Message&& source);
+    //opearatore di assegnazione
+    Message& operator=(const Message& source);
+    //opearatore di assegnazione per movimento
+    Message& operator=(Message&& source);
+    //distruttore
     ~Message();
+
     long getId() const;
     int getSize() const;
     char* getData() const;

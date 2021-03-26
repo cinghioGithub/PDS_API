@@ -1,1 +1,1 @@
-/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/lab_01.dir/main.cpp.o CMakeFiles/lab_01.dir/Message.cpp.o  -o lab_01.exe -Wl,--out-implib,liblab_01.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
+/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/lab_01.dir/main.cpp.o CMakeFiles/lab_01.dir/Message.cpp.o CMakeFiles/lab_01.dir/DurationLogger.cpp.o  -o lab_01.exe -Wl,--out-implib,liblab_01.dll.a -Wl,--major-image-version,0,--minor-image-version,0 

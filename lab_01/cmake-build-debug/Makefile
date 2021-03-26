@@ -143,6 +143,33 @@ lab_01/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_01.dir/build.make CMakeFiles/lab_01.dir/build
 .PHONY : lab_01/fast
 
+DurationLogger.o: DurationLogger.cpp.o
+
+.PHONY : DurationLogger.o
+
+# target to build an object file
+DurationLogger.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_01.dir/build.make CMakeFiles/lab_01.dir/DurationLogger.cpp.o
+.PHONY : DurationLogger.cpp.o
+
+DurationLogger.i: DurationLogger.cpp.i
+
+.PHONY : DurationLogger.i
+
+# target to preprocess a source file
+DurationLogger.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_01.dir/build.make CMakeFiles/lab_01.dir/DurationLogger.cpp.i
+.PHONY : DurationLogger.cpp.i
+
+DurationLogger.s: DurationLogger.cpp.s
+
+.PHONY : DurationLogger.s
+
+# target to generate assembly for a file
+DurationLogger.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_01.dir/build.make CMakeFiles/lab_01.dir/DurationLogger.cpp.s
+.PHONY : DurationLogger.cpp.s
+
 Message.o: Message.cpp.o
 
 .PHONY : Message.o
@@ -206,6 +233,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... lab_01"
+	@echo "... DurationLogger.o"
+	@echo "... DurationLogger.i"
+	@echo "... DurationLogger.s"
 	@echo "... Message.o"
 	@echo "... Message.i"
 	@echo "... Message.s"
