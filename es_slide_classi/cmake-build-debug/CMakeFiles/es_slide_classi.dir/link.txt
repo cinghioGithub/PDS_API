@@ -1,0 +1,1 @@
+/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/es_slide_classi.dir/main.cpp.o  -o es_slide_classi.exe -Wl,--out-implib,libes_slide_classi.dll.a -Wl,--major-image-version,0,--minor-image-version,0 

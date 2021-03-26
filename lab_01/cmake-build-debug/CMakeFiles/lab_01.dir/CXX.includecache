@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/Message.h
+string
+-
+
+/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/main.cpp
+iostream
+-
+Message.h
+/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/Message.h
+
