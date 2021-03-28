@@ -3,4 +3,4 @@ project(lab_01)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(lab_01 main.cpp Message.cpp Message.h DurationLogger.cpp DurationLogger.h)
+add_executable(lab_01 main.cpp Message.cpp Message.h DurationLogger.cpp DurationLogger.h MessageStore.cpp MessageStore.h)

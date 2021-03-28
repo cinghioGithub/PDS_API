@@ -40,7 +40,7 @@ int main()
     Message m9(10);
     buff2[0] = m9;
 
-    buff1[0] = Message(100);
+    buff1[0] = Message(100000);
 
     clock_t t1 = clock();
     //time_t t1 = time(NULL);

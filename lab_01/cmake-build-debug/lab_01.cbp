@@ -92,6 +92,12 @@
 		<Unit filename="/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/Message.h">
 			<Option target="lab_01"/>
 		</Unit>
+		<Unit filename="/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/MessageStore.cpp">
+			<Option target="lab_01"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/MessageStore.h">
+			<Option target="lab_01"/>
+		</Unit>
 		<Unit filename="/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/main.cpp">
 			<Option target="lab_01"/>
 		</Unit>

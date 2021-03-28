@@ -7,6 +7,10 @@ CMakeFiles/lab_01.dir/DurationLogger.cpp.o: ../DurationLogger.h
 CMakeFiles/lab_01.dir/Message.cpp.o: ../Message.cpp
 CMakeFiles/lab_01.dir/Message.cpp.o: ../Message.h
 
+CMakeFiles/lab_01.dir/MessageStore.cpp.o: ../Message.h
+CMakeFiles/lab_01.dir/MessageStore.cpp.o: ../MessageStore.cpp
+CMakeFiles/lab_01.dir/MessageStore.cpp.o: ../MessageStore.h
+
 CMakeFiles/lab_01.dir/main.cpp.o: ../DurationLogger.h
 CMakeFiles/lab_01.dir/main.cpp.o: ../Message.h
 CMakeFiles/lab_01.dir/main.cpp.o: ../main.cpp
