@@ -13,6 +13,7 @@ class Message {
     int size;
 
 public:
+    static long allocazione;
     //costruttore di dafault
     Message();
     //costruttore

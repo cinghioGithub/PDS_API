@@ -5,6 +5,8 @@
 #ifndef LAB_01_MESSAGESTORE_H
 #define LAB_01_MESSAGESTORE_H
 #include "Message.h"
+#include <iostream>
+#include <optional>
 
 #define N 20
 
@@ -13,7 +15,7 @@ class MessageStore {
     Message *messages;
     int dim; // dimensione corrente array
     int n; // incremento memoria
-    
+
 public:
     MessageStore(int n);
     ~MessageStore();

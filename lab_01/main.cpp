@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Message.h"
 #include "DurationLogger.h"
+#include "MessageStore.h"
 
 
 int main()
@@ -64,6 +65,22 @@ int main()
     delete m8;
     //std::cout<<"debug"<<std::endl;
     delete[] buff2;
+
+    //======================================================================================
+
+    Message m_1(5);
+    Message m_2(5);
+    Message m_3(5);
+    Message m_4(5);
+    MessageStore ms(3);
+
+    ms.add(m_1);
+    ms.add(m_2);
+    ms.add(m_3);
+    ms.add(m_4);
+
+    std::cout << (ms.remove(m_3.getId()) ? "true" : "false") << std::endl;
+    std::cout << Message::allocazione << std::endl;
 
     return 0;
 }
