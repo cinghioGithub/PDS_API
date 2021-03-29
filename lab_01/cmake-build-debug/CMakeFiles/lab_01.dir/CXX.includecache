@@ -6,18 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/DurationLogger.h
-iostream
--
-
-/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/Message.cpp
-iostream
--
-cstring
--
-Message.h
-/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/Message.h
-
 /cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/Message.h
 string
 -
@@ -27,6 +15,8 @@ MessageStore.h
 /cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/MessageStore.h
 cstring
 -
+tuple
+-
 
 /cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/MessageStore.h
 Message.h
@@ -35,14 +25,4 @@ iostream
 -
 optional
 -
-
-/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/main.cpp
-iostream
--
-Message.h
-/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/Message.h
-DurationLogger.h
-/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/DurationLogger.h
-MessageStore.h
-/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/MessageStore.h
 
