@@ -83,14 +83,17 @@ std::tuple<int, int> MessageStore::stats(){
 void MessageStore::compact(){
     Message *tmp = NULL;
     int validi = std::get<0>(this->stats());
-    int newDim=0;
+    int newDim=0, j=0;
 
     while(newDim < validi)
         newDim += n;
 
     tmp = new Message[newDim];
-    for(int i=0; i<newDim; i++){
-        tmp[i] = this->messages[i];
+    for(int i=0; i< this->dim; i++){
+        if(this->messages[i].getId() != -1) {
+            tmp[j] = this->messages[i];
+            j++;
+        }
     }
     delete[] this->messages;
     this->messages = tmp;
