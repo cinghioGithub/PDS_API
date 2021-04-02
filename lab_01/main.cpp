@@ -3,6 +3,7 @@
 #include "DurationLogger.h"
 #include "MessageStore.h"
 
+int count = 0;
 
 int main()
 {
@@ -81,6 +82,20 @@ int main()
 
     std::cout << (ms.remove(m_3.getId()) ? "true" : "false") << std::endl;
     std::cout << Message::allocazione << std::endl;
+
+    MessageStore message_store(100);
+    int ids[50];
+    for(int i = 0; i<message_store.getDim(); i++){
+        Message mt(1024*1024);
+        if(i<50) ids[i] = mt.getId();
+        message_store.add(mt);
+    }
+
+    for(int i=0; i<45; i++){
+        message_store.remove(ids[i]);
+    }
+
+    message_store.compact();
 
     return 0;
 }

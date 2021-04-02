@@ -32,23 +32,24 @@ void MessageStore::add(Message &m){
                 return;
             }
         }
-    }
-    Message *tmp = new Message[this->dim+this->n];
-    //memcpy(tmp, this->messages, this->dim*sizeof(Message));
-    for(int i=0; i<this->dim; i++)
-        tmp[i] = std::move(this->messages[i]);   //l'assegnazione per movimento è più veloce dell'assegnazione per copia
+        Message *tmp = new Message[this->dim+this->n];
+        //memcpy(tmp, this->messages, this->dim*sizeof(Message));
+        for(int i=0; i<this->dim; i++)
+            tmp[i] = this->messages[i];
+            //tmp[i] = std::move(this->messages[i]);   //l'assegnazione per movimento è più veloce dell'assegnazione per copia
 
-    //delete[] this->messages;   //non necessaria dato che l'assegnazione è per movimento
-    this->messages = tmp;
-    this->messages[dim] = m;
-    this->dim += n;
+        delete[] this->messages;   //non necessaria dato che l'assegnazione è per movimento
+        this->messages = tmp;
+        this->messages[dim] = m;
+        this->dim += n;
+    }
 }
 
 // restituisce un messaggio se presente
 std::optional<Message> MessageStore::get(long id){
     for(int i=0; i<this->dim; i++){
         if(this->messages[i].getId() == id)
-            return this->messages[i];
+            return {this->messages[i]};
     }
     return {};
 }
@@ -98,4 +99,8 @@ void MessageStore::compact(){
     delete[] this->messages;
     this->messages = tmp;
     this->dim = newDim;
+}
+
+int MessageStore::getDim() const{
+    return this->dim;
 }

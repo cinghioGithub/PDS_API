@@ -38,6 +38,8 @@ public:
     // alla dimensione multiplo di n minima in grado di contenere
     // tutte le celle
     void compact();
+
+    int getDim() const;
 };
 
 
