@@ -19,7 +19,7 @@ Directory::~Directory() {
     for (auto it = this->children.begin(); it != this->children.end(); ++it) {
         delete it->second;
     }
-    std::cout << "distruttore: " << this->name << std::endl;
+    //std::cout << "distruttore: " << this->name << std::endl;
 }
 
 Directory *Directory::getRoot() {
