@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/Directory.cpp">
+			<Option target="lab_02"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/Directory.h">
+			<Option target="lab_02"/>
+		</Unit>
 		<Unit filename="/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/main.cpp">
 			<Option target="lab_02"/>
 		</Unit>

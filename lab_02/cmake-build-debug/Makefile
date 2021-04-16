@@ -143,6 +143,33 @@ lab_02/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_02.dir/build.make CMakeFiles/lab_02.dir/build
 .PHONY : lab_02/fast
 
+Directory.o: Directory.cpp.o
+
+.PHONY : Directory.o
+
+# target to build an object file
+Directory.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_02.dir/build.make CMakeFiles/lab_02.dir/Directory.cpp.o
+.PHONY : Directory.cpp.o
+
+Directory.i: Directory.cpp.i
+
+.PHONY : Directory.i
+
+# target to preprocess a source file
+Directory.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_02.dir/build.make CMakeFiles/lab_02.dir/Directory.cpp.i
+.PHONY : Directory.cpp.i
+
+Directory.s: Directory.cpp.s
+
+.PHONY : Directory.s
+
+# target to generate assembly for a file
+Directory.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_02.dir/build.make CMakeFiles/lab_02.dir/Directory.cpp.s
+.PHONY : Directory.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -179,6 +206,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... lab_02"
+	@echo "... Directory.o"
+	@echo "... Directory.i"
+	@echo "... Directory.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
