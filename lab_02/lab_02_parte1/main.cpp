@@ -14,7 +14,5 @@ int main() {
     std::cout << (alfa->remove("beta") ? "true" : "false") << std::endl;
     root->ls(4);
 
-    delete root;
-
     return 0;
 }

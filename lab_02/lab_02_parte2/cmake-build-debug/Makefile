@@ -170,6 +170,33 @@ Directory.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_02.dir/build.make CMakeFiles/lab_02.dir/Directory.cpp.s
 .PHONY : Directory.cpp.s
 
+File.o: File.cpp.o
+
+.PHONY : File.o
+
+# target to build an object file
+File.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_02.dir/build.make CMakeFiles/lab_02.dir/File.cpp.o
+.PHONY : File.cpp.o
+
+File.i: File.cpp.i
+
+.PHONY : File.i
+
+# target to preprocess a source file
+File.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_02.dir/build.make CMakeFiles/lab_02.dir/File.cpp.i
+.PHONY : File.cpp.i
+
+File.s: File.cpp.s
+
+.PHONY : File.s
+
+# target to generate assembly for a file
+File.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_02.dir/build.make CMakeFiles/lab_02.dir/File.cpp.s
+.PHONY : File.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -209,6 +236,9 @@ help:
 	@echo "... Directory.o"
 	@echo "... Directory.i"
 	@echo "... Directory.s"
+	@echo "... File.o"
+	@echo "... File.i"
+	@echo "... File.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

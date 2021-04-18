@@ -5,7 +5,7 @@
 #include "Directory.h"
 #include <string>
 
-Directory* Directory::root = new Directory("root", nullptr);
+Directory Directory::root("root", nullptr);
 
 Directory::Directory(std::string name, Directory* f) {
     //std::cout << "costruttore: " << name << std::endl;
@@ -15,7 +15,6 @@ Directory::Directory(std::string name, Directory* f) {
 }
 
 Directory::~Directory() {
-    if(root == this) root = nullptr;
     for (auto it = this->children.begin(); it != this->children.end(); ++it) {
         delete it->second;
     }
@@ -23,7 +22,7 @@ Directory::~Directory() {
 }
 
 Directory *Directory::getRoot() {
-    return root;
+    return &root;
 }
 
 Directory *Directory::addDirectory(const std::string &name) {
@@ -75,11 +74,14 @@ void Directory::recursive_copy(Directory *source, Directory *tmp) {
 }
 
 void Directory::ls(int indent) {
-    for(int i=0; i<indent; i++)
+    this->recursive_ls(indent, 0);
+}
+
+void Directory::recursive_ls(int indent, int deep) {
+    for(int i=0; i<indent*deep; i++)
         std::cout << " ";
     std::cout << this->name << std::endl;
-    indent += this->name.length();
     for (auto it = this->children.begin(); it != this->children.end(); ++it) {
-        it->second->ls(indent);
+        it->second->recursive_ls(indent, ++deep);
     }
 }

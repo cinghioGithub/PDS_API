@@ -68,10 +68,10 @@ RM = /usr/bin/cmake.exe -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02
+CMAKE_SOURCE_DIR = /cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/lab_02_parte1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/cmake-build-debug
+CMAKE_BINARY_DIR = /cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/lab_02_parte1/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -100,9 +100,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/cmake-build-debug/CMakeFiles /cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/lab_02_parte1/cmake-build-debug/CMakeFiles /cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/lab_02_parte1/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/lab_02_parte1/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -142,6 +142,33 @@ lab_02: cmake_check_build_system
 lab_02/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_02.dir/build.make CMakeFiles/lab_02.dir/build
 .PHONY : lab_02/fast
+
+Base.o: Base.cpp.o
+
+.PHONY : Base.o
+
+# target to build an object file
+Base.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_02.dir/build.make CMakeFiles/lab_02.dir/Base.cpp.o
+.PHONY : Base.cpp.o
+
+Base.i: Base.cpp.i
+
+.PHONY : Base.i
+
+# target to preprocess a source file
+Base.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_02.dir/build.make CMakeFiles/lab_02.dir/Base.cpp.i
+.PHONY : Base.cpp.i
+
+Base.s: Base.cpp.s
+
+.PHONY : Base.s
+
+# target to generate assembly for a file
+Base.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab_02.dir/build.make CMakeFiles/lab_02.dir/Base.cpp.s
+.PHONY : Base.cpp.s
 
 Directory.o: Directory.cpp.o
 
@@ -206,6 +233,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... lab_02"
+	@echo "... Base.o"
+	@echo "... Base.i"
+	@echo "... Base.s"
 	@echo "... Directory.o"
 	@echo "... Directory.i"
 	@echo "... Directory.s"

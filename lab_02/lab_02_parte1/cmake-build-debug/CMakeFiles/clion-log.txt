@@ -1,4 +1,4 @@
-C:\cygwin64\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02
+C:\cygwin64\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/lab_02_parte1
 -- Configuring done
 -- Generating done
--- Build files have been written to: /cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/cmake-build-debug
+-- Build files have been written to: /cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/lab_02_parte1/cmake-build-debug

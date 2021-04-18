@@ -75,11 +75,14 @@ void Directory::recursive_copy(Directory *source, Directory *tmp) {
 }
 
 void Directory::ls(int indent) {
-    for(int i=0; i<indent; i++)
+    this->recursive_ls(indent, 0);
+}
+
+void Directory::recursive_ls(int indent, int deep) {
+    for(int i=0; i<indent*deep; i++)
         std::cout << " ";
     std::cout << this->name << std::endl;
-    indent += this->name.length();
     for (auto it = this->children.begin(); it != this->children.end(); ++it) {
-        it->second->ls(indent);
+        it->second->recursive_ls(indent, ++deep);
     }
 }

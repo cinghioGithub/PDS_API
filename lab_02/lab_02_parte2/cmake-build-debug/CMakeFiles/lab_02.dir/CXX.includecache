@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/lab_02_parte2/Base.h
+iostream
+-
+
+/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/lab_02_parte2/Directory.cpp
+Directory.h
+/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/lab_02_parte2/Directory.h
+string
+-
+
+/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/lab_02_parte2/Directory.h
+Base.h
+/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/lab_02_parte2/Base.h
+iostream
+-
+string
+-
+map
+-
+
+/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/lab_02_parte2/main.cpp
+iostream
+-
+Directory.h
+/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/lab_02_parte2/Directory.h
+

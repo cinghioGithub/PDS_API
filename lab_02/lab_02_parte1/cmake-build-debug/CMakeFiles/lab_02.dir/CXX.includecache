@@ -6,17 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/Directory.cpp
-Directory.h
-/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/Directory.h
-string
--
+/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/lab_02_parte1/Base.cpp
+Base.h
+/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/lab_02_parte1/Base.h
 
-/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/Directory.h
+/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/lab_02_parte1/Base.h
 iostream
--
-string
--
-map
 -
 

@@ -80,10 +80,19 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/lab_02_parte2/Base.h">
+			<Option target="lab_02"/>
+		</Unit>
 		<Unit filename="/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/lab_02_parte2/Directory.cpp">
 			<Option target="lab_02"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/lab_02_parte2/Directory.h">
+			<Option target="lab_02"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/lab_02_parte2/File.cpp">
+			<Option target="lab_02"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/lab_02_parte2/File.h">
 			<Option target="lab_02"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_02/lab_02_parte2/main.cpp">
