@@ -5,17 +5,20 @@
 #include "Directory.h"
 #include <string>
 
-Directory* Directory::root = new Directory("root", nullptr);
+Directory Directory::root("root", nullptr);
 
-Directory::Directory(std::string name, Directory* f) {
+int Directory::mType() const {
+    return DIR;
+}
+void Directory::ls(int indent) const { }
+
+Directory::Directory(std::string name, Directory* f): Base(name) {
     //std::cout << "costruttore: " << name << std::endl;
     //if(root == nullptr) root = this;
-    this->name = name;
     this->father = f;
 }
 
 Directory::~Directory() {
-    if(root == this) root = nullptr;
     for (auto it = this->children.begin(); it != this->children.end(); ++it) {
         delete it->second;
     }
@@ -23,14 +26,21 @@ Directory::~Directory() {
 }
 
 Directory *Directory::getRoot() {
-    return root;
+    return &root;
 }
 
 Directory *Directory::addDirectory(const std::string &name) {
-    Directory* d = new Directory(name, this);
-    std::pair<std::string, Directory*> p = std::make_pair(name, d);
-    Directory* tmp = this->children.insert(p).first->second;
-    return tmp;
+    Base* tmp;
+    if(this->children.find(name) == this->children.end()){
+        Directory* d = new Directory(name, this);
+        std::pair<std::string, Directory*> p = std::make_pair(name, d);
+        tmp = this->children.insert(p).first->second;
+    }
+    else{
+        tmp = this->children.find(name)->second;
+        if(tmp->mType() == FILE) tmp = nullptr;
+    }
+    return (Directory*) tmp;
 }
 
 Directory *Directory::get(const std::string &name) {
@@ -85,4 +95,13 @@ void Directory::recursive_ls(int indent, int deep) {
     for (auto it = this->children.begin(); it != this->children.end(); ++it) {
         it->second->recursive_ls(indent, ++deep);
     }
+}
+
+File *Directory::addFile(const std::string &name, uintmax_t size) {
+    File* tmp = nullptr;
+    if(this->children.find(name) == this->children.end()){
+        tmp = new File(size, 0, name);
+        this->children.insert(std::make_pair(name, (Base *)tmp));
+    }
+    return tmp;
 }
