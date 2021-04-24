@@ -38,34 +38,42 @@ Directory *Directory::addDirectory(const std::string &name) {
     }
     else{
         tmp = this->children.find(name)->second;
-        if(tmp->mType() == FILE) tmp = nullptr;
+        if(tmp->mType() == FILE_) tmp = nullptr;
     }
     return (Directory*) tmp;
 }
 
-Directory *Directory::get(const std::string &name) {
+Base *Directory::get(const std::string &name) {
     if(name.compare("..")==0) return this->father;
     return this->children.find(name)->second;
 }
 
 bool Directory::remove(const std::string &name) {
-    if(this->children.find(name) == this->children.end()) return false;
-    if(name.compare("..")==0 || name.compare(".")==0) return false;
+    if(this->children.find(name) == this->children.end())
+        return false;
+    if(name.compare("..")==0 || name.compare(".")==0)
+        return false;
     delete this->children.find(name)->second;
     this->children.erase(name);
     return true;
 }
 
 bool Directory::move(const std::string &name, Directory *target) {
-    if(this->children.find(name) == this->children.end()) return false;
-    if(target == nullptr) return false;
-    Directory* dir = this->children.find(name)->second;
-    dir->father = target;
-    target->children.insert(std::make_pair(name, dir));
-    this->children.erase(name);
-    return true;
+    if(this->children.find(name) == this->children.end())
+        return false;
+    if(target == nullptr)
+        return false;
+    if(this->children.find(name)->second->mType()==DIR){
+        Directory* dir = (Directory *)this->children.find(name)->second;
+        dir->father = target;
+        target->children.insert(std::make_pair(name, dir));
+        this->children.erase(name);
+        return true;
+    }
+    return false;
 }
 
+/*
 bool Directory::copy(const std::string &name, Directory *target) {
     if(this->children.find(name) == this->children.end()) return false;
     if(target == nullptr) return false;
@@ -74,7 +82,9 @@ bool Directory::copy(const std::string &name, Directory *target) {
     recursive_copy(source, tmp);
     return true;
 }
+ */
 
+/*
 void Directory::recursive_copy(Directory *source, Directory *tmp) {
     if(source->children.size() == 0)
         return;
@@ -83,6 +93,7 @@ void Directory::recursive_copy(Directory *source, Directory *tmp) {
         recursive_copy(it->second, dir);
     }
 }
+*/
 
 void Directory::ls(int indent) {
     this->recursive_ls(indent, 0);
@@ -91,9 +102,15 @@ void Directory::ls(int indent) {
 void Directory::recursive_ls(int indent, int deep) {
     for(int i=0; i<indent*deep; i++)
         std::cout << " ";
-    std::cout << this->name << std::endl;
+    std::cout << this->getName() << std::endl;
     for (auto it = this->children.begin(); it != this->children.end(); ++it) {
-        it->second->recursive_ls(indent, ++deep);
+        if(it->second->mType()==DIR)
+            ((Directory *)(it->second))->recursive_ls(indent, deep+1);
+        else{
+            for(int i=0; i<indent*(deep+1); i++)
+                std::cout << " ";
+            std::cout << it->second->getName() << std::endl;
+        }
     }
 }
 
@@ -103,5 +120,19 @@ File *Directory::addFile(const std::string &name, uintmax_t size) {
         tmp = new File(size, 0, name);
         this->children.insert(std::make_pair(name, (Base *)tmp));
     }
+    return tmp;
+}
+
+Directory *Directory::getDirectory(const std::string &name) {
+    if(name.compare("..")==0) return this->father;
+    if(this->children.find(name)->second->mType()==DIR)
+        return (Directory *)this->children.find(name)->second;
+    return nullptr;
+}
+
+File *Directory::getFile(const std::string &name) {
+    File* tmp = nullptr;
+    if(this->children.find(name)->second->mType() == FILE_)
+        tmp = (File *)this->children.find(name)->second;
     return tmp;
 }

@@ -16,7 +16,7 @@ class Directory: public Base{
     Directory* father;
     std::map<std::string, Base*> children;
 
-    void recursive_copy(Directory* source, Directory* tmp);
+    //void recursive_copy(Directory* source, Directory* tmp);
     void recursive_ls(int indent, int deep);
     Directory(std::string name, Directory* f);
 public:
@@ -25,13 +25,15 @@ public:
     int mType() const;
     void ls(int indent) const;
     File* addFile(const std::string &name, uintmax_t size);
+    Directory* getDirectory(const std::string &name);
+    File* getFile(const std::string &name);
 
     static Directory* getRoot();
     Directory* addDirectory(const std::string &name);
-    Directory* get(const std::string &name);
+    Base* get(const std::string &name);
     bool remove(const std::string &name);
     bool move(const std::string &name, Directory *target);
-    bool copy(const std::string &name, Directory *target);
+    //bool copy(const std::string &name, Directory *target);
     void ls(int indent);
 };
 

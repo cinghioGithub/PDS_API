@@ -5,7 +5,7 @@
 #ifndef LAB_02_BASE_H
 #define LAB_02_BASE_H
 
-#define FILE 0
+#define FILE_ 0
 #define DIR 1
 
 #include <iostream>

@@ -4,6 +4,7 @@
 CMakeFiles/lab_02.dir/Directory.cpp.o: ../Base.h
 CMakeFiles/lab_02.dir/Directory.cpp.o: ../Directory.cpp
 CMakeFiles/lab_02.dir/Directory.cpp.o: ../Directory.h
+CMakeFiles/lab_02.dir/Directory.cpp.o: ../File.h
 
 CMakeFiles/lab_02.dir/File.cpp.o: ../Base.h
 CMakeFiles/lab_02.dir/File.cpp.o: ../File.cpp
@@ -11,5 +12,6 @@ CMakeFiles/lab_02.dir/File.cpp.o: ../File.h
 
 CMakeFiles/lab_02.dir/main.cpp.o: ../Base.h
 CMakeFiles/lab_02.dir/main.cpp.o: ../Directory.h
+CMakeFiles/lab_02.dir/main.cpp.o: ../File.h
 CMakeFiles/lab_02.dir/main.cpp.o: ../main.cpp
 

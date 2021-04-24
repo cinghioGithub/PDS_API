@@ -10,11 +10,11 @@ File::File(uintmax_t size, uintmax_t date, std::string name): Base(name) {
 }
 
 uintmax_t File::getSize() const {
-    return 0;
+    return this->size;
 }
 
 uintmax_t File::getDate() const {
-    return 0;
+    return this->date;
 }
 
 void File::ls(int indent) const{
