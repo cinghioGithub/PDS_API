@@ -18,7 +18,9 @@ uintmax_t File::getDate() const {
 }
 
 void File::ls(int indent) const{
-
+    for(int i=0; i<indent; i++)
+        std::cout << " ";
+    std::cout << this->getName() << std::endl;
 }
 
 int File::mType() const{

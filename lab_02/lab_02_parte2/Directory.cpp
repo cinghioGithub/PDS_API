@@ -107,9 +107,7 @@ void Directory::recursive_ls(int indent, int deep) {
         if(it->second->mType()==DIR)
             ((Directory *)(it->second))->recursive_ls(indent, deep+1);
         else{
-            for(int i=0; i<indent*(deep+1); i++)
-                std::cout << " ";
-            std::cout << it->second->getName() << std::endl;
+            it->second->ls(indent*(deep+1));
         }
     }
 }
