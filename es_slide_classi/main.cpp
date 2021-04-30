@@ -1,4 +1,6 @@
 #include <iostream>
+#include <functional>
+#include <fstream>
 
 class Buffer{
 private:
@@ -50,8 +52,14 @@ public:
     }
 };
 
-int main() {
+std::function<bool(float)> interval(float low, float high){
+    return [low, high] (float val) -> bool {
+        return (val >= low && val < high);
+    };
+}
 
+int main() {
+    /*
     Buffer b1(10);
     Buffer b2{12};
     Buffer *b3 = new Buffer(13);
@@ -71,6 +79,31 @@ int main() {
 
     delete b3;
     b3 = NULL;
+     */
+
+    float low = 5, high = 9;
+    std::function<bool(float)> f = interval(low, high);
+    std::cout << "f(2) -> " << f(2) << std::endl;
+    std::cout << "f(7) -> " << f(7) << std::endl;
+    low = 1;
+    high = 3;
+    std::cout << "f(2) -> " << f(2) << std::endl;
+    std::cout << "f(7) -> " << f(7) << std::endl;
+
+    std::cout << "==========================================" <<std::endl;
+
+    std::ifstream fin;
+    fin.open("..\\CMakeLists.txt", std::ios::in);
+    while(fin.good()){
+        char line[101];
+        fin.getline(line, 100);
+        std::cout << line <<std::endl;
+    }
+    /*else{
+        std::cout << "Errore" << std::endl;
+    }*/
+
+    fin.close();
 
     return 0;
 }
