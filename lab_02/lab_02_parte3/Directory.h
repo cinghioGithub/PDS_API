@@ -12,7 +12,7 @@
 #include <map>
 #include <memory>
 
-class Directory: public Base, std::enable_shared_from_this<Directory>{
+class Directory: public Base, public std::enable_shared_from_this<Directory>{
     static std::shared_ptr<Directory> root;
     std::weak_ptr<Directory> father;
     std::weak_ptr<Directory> self;
@@ -22,6 +22,9 @@ class Directory: public Base, std::enable_shared_from_this<Directory>{
     void recursive_ls(int indent, int deep);
     Directory(std::string name, std::weak_ptr<Directory> f);
     std::weak_ptr<Directory> getSelf();
+    std::shared_ptr<Directory> getptr() {
+        return shared_from_this();
+    }
 
 public:
     ~Directory() override;

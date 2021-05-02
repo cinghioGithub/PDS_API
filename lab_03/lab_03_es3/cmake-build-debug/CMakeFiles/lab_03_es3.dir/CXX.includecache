@@ -6,21 +6,17 @@
 
 #IncludeRegexTransform: 
 
+/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_03/lab_03_es3/Proc.cpp
+Proc.h
+/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_03/lab_03_es3/Proc.h
+
 /cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_03/lab_03_es3/Proc.h
 iostream
+-
+memory
 -
 map
 -
 list
 -
-
-/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_03/lab_03_es3/main.cpp
-iostream
--
-fstream
--
-memory
--
-Proc.h
-/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_03/lab_03_es3/Proc.h
 

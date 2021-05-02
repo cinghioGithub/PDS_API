@@ -22,7 +22,7 @@ Directory::Directory(std::string name, std::weak_ptr<Directory> f): Base(name) {
     //std::cout << "costruttore: " << name << std::endl;
     //if(root == nullptr) root = this;
     this->father = f;
-    //this->self = std::shared_ptr<Directory>{this};
+    //this->self = shared_from_this();
 }
 
 std::weak_ptr<Directory> Directory::getSelf() {
@@ -43,7 +43,6 @@ std::shared_ptr<Directory> Directory::addDirectory(const std::string &name) {
         std::shared_ptr<Directory> d{ new Directory{name, this->getSelf()}};
         std::pair<std::string, std::shared_ptr<Base>> p = std::make_pair(name, d);
         tmp = this->children.insert(p).first->second;
-        //tmp = d;
     }
     else{
         tmp = this->children.find(name)->second;
@@ -53,7 +52,7 @@ std::shared_ptr<Directory> Directory::addDirectory(const std::string &name) {
 }
 
 std::weak_ptr<Base> Directory::get(const std::string &name) {
-    //if(name.compare("..")==0) return this->father;
+    //if(name=="..") return this->father;
     return this->children.find(name)->second;
 }
 
