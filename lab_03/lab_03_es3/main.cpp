@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <memory>
+#include <vector>
 #include "Proc.h"
 
 int main() {
@@ -88,5 +89,16 @@ int main() {
             it->second->setFather(father);
         }
     }
+
+    std::vector<std::shared_ptr<Proc>> ordered;
+    for (auto it = processi.begin(); it != processi.end(); ++it){
+        ordered.push_back(it->second);
+    }
+    std::sort(ordered.begin(), ordered.end(), [](std::shared_ptr<Proc> a, std::shared_ptr<Proc> b) -> bool { return a->getNumberOpenFile() > b->getNumberOpenFile();});
+
+    for (auto it = ordered.begin(); it != ordered.end(); ++it){
+        std::cout << it->get()->getNumberOpenFile() << std::endl;
+    }
+
     return 0;
 }

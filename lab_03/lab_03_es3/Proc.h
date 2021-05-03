@@ -25,6 +25,7 @@ public:
     int getPPid();
     void addChild(std::shared_ptr<Proc> child);
     void setFather(std::shared_ptr<Proc> father);
+    int getNumberOpenFile();
 };
 
 

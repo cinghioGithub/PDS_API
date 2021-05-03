@@ -37,3 +37,7 @@ int Proc::getPPid() {
     }
     return 0;
 }
+
+int Proc::getNumberOpenFile() {
+    return this->openFile.size();
+}
