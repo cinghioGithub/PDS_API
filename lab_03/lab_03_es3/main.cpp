@@ -5,6 +5,13 @@
 #include <set>
 #include "Proc.h"
 
+void ordinaProcessiAperti(std::map<int, std::shared_ptr<Proc>> processi);
+std::shared_ptr<Proc> getProcess (std::shared_ptr<Proc> process, int pid);
+void ordinaProcessiApertiFigli(std::shared_ptr<Proc> process);
+void ordinaFileApertiFigli(std::shared_ptr<Proc> process);
+void ordinaFileMappatiFigli(std::shared_ptr<Proc> process);
+void listaProcessiStatoFigli(std::shared_ptr<Proc> process);
+
 int main() {
     std::map<int, std::shared_ptr<Proc>> processi;
     std::shared_ptr<Proc> zero{ new Proc{0, std::map<std::string,std::string>{}, std::list<std::string>{}, std::list<std::string>{}, ""}};
@@ -91,19 +98,8 @@ int main() {
         }
     }
 
-    std::vector<std::shared_ptr<Proc>> orderedOpenFile;
-    for (auto it = processi.begin(); it != processi.end(); ++it){
-        orderedOpenFile.push_back(it->second);
-    }
-    //ordine decrescente
-    std::sort(orderedOpenFile.begin(), orderedOpenFile.end(),
-              [](std::shared_ptr<Proc> a, std::shared_ptr<Proc> b) -> bool {
-        return a->getNumberOpenFile() > b->getNumberOpenFile();
-    });
+    ordinaProcessiAperti(processi);
 
-    for (auto it = orderedOpenFile.begin(); it != orderedOpenFile.end(); ++it){
-        std::cout << "Processo: " << it->get()->getPid() << ", con " << it->get()->getNumberOpenFile() << " file aperti" << std::endl;
-    }
     //ordinamento file aperti
     std::map<std::string, int> orderedProcessi;
     for (auto it = processi.begin(); it != processi.end(); ++it){
@@ -143,7 +139,7 @@ int main() {
         arr1.emplace_back(item);
     }
     std::sort(arr1.begin(), arr1.end(), [] (const auto &x, const auto &y) { return x.second < y.second; });
-    for(auto it = arr.begin(); it != arr.end(); ++it){
+    for(auto it = arr1.begin(); it != arr1.end(); ++it){
         std::cout << it->first << " utilizzato in " << it->second << " processi" << std::endl;
     }
     //ordinamento processi stato
@@ -152,5 +148,135 @@ int main() {
             std::cout << "Pid: " << it->second->getPid() << std::endl;
         }
     }
+
+    std::shared_ptr<Proc> findProcess = getProcess(zero, 2);
+    ordinaProcessiApertiFigli(findProcess);
+    ordinaFileApertiFigli(findProcess);
+    ordinaFileMappatiFigli(findProcess);
+    listaProcessiStatoFigli(findProcess);
+
     return 0;
+}
+
+void ordinaProcessiAperti(std::map<int, std::shared_ptr<Proc>> processi) {
+    std::vector<std::shared_ptr<Proc>> orderedOpenFile;
+    for (auto it = processi.begin(); it != processi.end(); ++it){
+        orderedOpenFile.push_back(it->second);
+    }
+    //ordine decrescente
+    std::sort(orderedOpenFile.begin(), orderedOpenFile.end(),
+              [](std::shared_ptr<Proc> a, std::shared_ptr<Proc> b) -> bool {
+                  return a->getNumberOpenFile() > b->getNumberOpenFile();
+              });
+
+    for (auto it = orderedOpenFile.begin(); it != orderedOpenFile.end(); ++it){
+        std::cout << "Processo: " << it->get()->getPid() << ", con " << it->get()->getNumberOpenFile() << " file aperti" << std::endl;
+    }
+}
+
+std::shared_ptr<Proc> getProcess (std::shared_ptr<Proc> process, int pid){
+    if(process->getPid() == pid)
+        return process;
+
+    std::shared_ptr<Proc> tmp;
+    std::list<std::shared_ptr<Proc>> children = process->getChildren();
+    for(auto child = children.begin(); child != children.end(); ++child){
+        tmp = getProcess(*child, pid);
+        if(tmp != std::shared_ptr<Proc>{})
+            return tmp;
+    }
+    return std::shared_ptr<Proc>{};
+}
+
+void recursivePopulate(std::shared_ptr<Proc> process, std::vector<std::shared_ptr<Proc>> &orderedOpenFile){
+    std::list<std::shared_ptr<Proc>> children = process->getChildren();
+    for(auto child = children.begin(); child != children.end(); ++child){
+        orderedOpenFile.push_back(*child);
+        recursivePopulate(*child, orderedOpenFile);
+    }
+}
+
+void ordinaProcessiApertiFigli(std::shared_ptr<Proc> process){
+    std::vector<std::shared_ptr<Proc>> orderedOpenFile;
+    recursivePopulate(process, orderedOpenFile);
+    std::sort(orderedOpenFile.begin(), orderedOpenFile.end(),
+              [](std::shared_ptr<Proc> a, std::shared_ptr<Proc> b) -> bool {
+                  return a->getNumberOpenFile() > b->getNumberOpenFile();
+              });
+
+    int c=0;
+    for (auto it = orderedOpenFile.begin(); it != orderedOpenFile.end(); ++it){
+        std::cout << "Processo: " << it->get()->getPid() << ", con " << it->get()->getNumberOpenFile() << " file aperti" << std::endl;
+        c++;
+    }
+    std::cout << c << std::endl;
+}
+
+void ordinaFileApertiFigli(std::shared_ptr<Proc> process){
+    std::map<std::string, int> orderedProcessi;
+    std::vector<std::shared_ptr<Proc>> processi;
+    recursivePopulate(process, processi);
+    for (auto it = processi.begin(); it != processi.end(); ++it){
+        std::list<std::string> listString = (*it)->getOpenFile();
+        for(auto file = listString.begin(); file != listString.end(); ++file){
+            if(orderedProcessi.find(*file) != orderedProcessi.end()){
+                orderedProcessi.find(*file)->second = orderedProcessi.find(*file)->second + 1;
+            }
+            else{
+                orderedProcessi.insert(std::make_pair(*file, 1));
+            }
+        }
+    }
+    std::vector<std::pair<std::string, int> > arr;
+    for (const auto &item : orderedProcessi) {
+        arr.emplace_back(item);
+    }
+    std::sort(arr.begin(), arr.end(), [] (const auto &x, const auto &y) { return x.second < y.second; });
+    int c=0;
+    for(auto it = arr.begin(); it != arr.end(); ++it){
+        std::cout << it->first << " aperto in " << it->second << " processi" << std::endl;
+        c++;
+    }
+    std::cout << c << std::endl;;
+}
+
+void ordinaFileMappatiFigli(std::shared_ptr<Proc> process){
+    std::map<std::string, int> orderedMappedFile;
+    std::vector<std::shared_ptr<Proc>> processi;
+    recursivePopulate(process, processi);
+    for (auto it = processi.begin(); it != processi.end(); ++it){
+        std::list<std::string> listString = (*it)->getMappedFile();
+        for(auto file = listString.begin(); file != listString.end(); ++file){
+            if(orderedMappedFile.find(*file) != orderedMappedFile.end()){
+                orderedMappedFile.find(*file)->second = orderedMappedFile.find(*file)->second + 1;
+            }
+            else{
+                orderedMappedFile.insert(std::make_pair(*file, 1));
+            }
+        }
+    }
+    std::vector<std::pair<std::string, int> > arr1;
+    for (const auto &item : orderedMappedFile) {
+        arr1.emplace_back(item);
+    }
+    std::sort(arr1.begin(), arr1.end(), [] (const auto &x, const auto &y) { return x.second < y.second; });
+    int c=0;
+    for(auto it = arr1.begin(); it != arr1.end(); ++it){
+        std::cout << it->first << " utilizzato in " << it->second << " processi" << std::endl;
+        c++;
+    }
+    std::cout << c << std::endl;
+}
+
+void listaProcessiStatoFigli(std::shared_ptr<Proc> process){
+    std::vector<std::shared_ptr<Proc>> processi;
+    recursivePopulate(process, processi);
+    int c=0;
+    for (auto it = processi.begin(); it != processi.end(); ++it){
+        if((*it)->getState() == "I"){
+            std::cout << "Pid: " << (*it)->getPid() << std::endl;
+            c++;
+        }
+    }
+    std::cout << c << std::endl;
 }

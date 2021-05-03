@@ -56,3 +56,7 @@ std::string Proc::getState() {
     }
     return std::string{};
 }
+
+std::list<std::shared_ptr<Proc>> Proc::getChildren() {
+    return this->children;
+}

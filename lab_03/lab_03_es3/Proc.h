@@ -29,6 +29,7 @@ public:
     std::list<std::string> getOpenFile();
     std::list<std::string> getMappedFile();
     std::string getState();
+    std::list<std::shared_ptr<Proc>> getChildren();
 };
 
 
