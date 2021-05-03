@@ -10,11 +10,11 @@ Proc::Proc(int pid, std::map<std::string,std::string> status, std::list<std::str
     this->openFile = open;
     this->mappedFile = mapped;
     this->stat = stat;
-    std::cout << "Oggetto proc costruito: "<< this->pid << std::endl;
+    //std::cout << "Oggetto proc costruito: " << this->pid << std::endl;
 }
 
 Proc::~Proc() {
-    std::cout << "Oggetto proc distrutto: " << std::endl;
+    //std::cout << "Oggetto proc distrutto: " << this->pid << std::endl;
 }
 
 int Proc::getPid() {
@@ -40,4 +40,8 @@ int Proc::getPPid() {
 
 int Proc::getNumberOpenFile() {
     return this->openFile.size();
+}
+
+std::list<std::string> Proc::getOpenFile() {
+    return this->openFile;
 }

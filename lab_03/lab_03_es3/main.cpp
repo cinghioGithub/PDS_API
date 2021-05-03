@@ -2,6 +2,7 @@
 #include <fstream>
 #include <memory>
 #include <vector>
+#include <set>
 #include "Proc.h"
 
 int main() {
@@ -90,14 +91,41 @@ int main() {
         }
     }
 
-    std::vector<std::shared_ptr<Proc>> ordered;
+    std::vector<std::shared_ptr<Proc>> orderedOpenFile;
     for (auto it = processi.begin(); it != processi.end(); ++it){
-        ordered.push_back(it->second);
+        orderedOpenFile.push_back(it->second);
     }
-    std::sort(ordered.begin(), ordered.end(), [](std::shared_ptr<Proc> a, std::shared_ptr<Proc> b) -> bool { return a->getNumberOpenFile() > b->getNumberOpenFile();});
+    //ordine decrescente
+    std::sort(orderedOpenFile.begin(), orderedOpenFile.end(),
+              [](std::shared_ptr<Proc> a, std::shared_ptr<Proc> b) -> bool {
+        return a->getNumberOpenFile() > b->getNumberOpenFile();
+    });
 
-    for (auto it = ordered.begin(); it != ordered.end(); ++it){
-        std::cout << it->get()->getNumberOpenFile() << std::endl;
+    for (auto it = orderedOpenFile.begin(); it != orderedOpenFile.end(); ++it){
+        std::cout << "Processo: " << it->get()->getPid() << ", con " << it->get()->getNumberOpenFile() << " file aperti" << std::endl;
+    }
+
+    std::vector<std::string> orderedProcessi;
+    std::map<std::string, int> tmp;
+    for (auto it = processi.begin(); it != processi.end(); ++it){
+        std::list<std::string> listString = it->second->getOpenFile();
+        for(auto file = listString.begin(); file != listString.end(); ++file){
+            if(tmp.find(*file) != tmp.end()){
+                tmp.find(*file)->second = tmp.find(*file)->second + 1;
+            }
+            else{
+                tmp.insert(std::make_pair(*file, 1));
+            }
+        }
+    }
+    std::vector<std::pair<std::string, int> > arr;
+    for (const auto &item : tmp) {
+        arr.emplace_back(item);
+    }
+    std::sort(arr.begin(), arr.end(), [] (const auto &x, const auto &y) { return x.second < y.second; });
+    for(auto it = arr.begin(); it != arr.end(); ++it){
+        std::cout << it->first << " aperto in " << it->second << " processi" << std::endl;
+        c++;
     }
 
     return 0;
