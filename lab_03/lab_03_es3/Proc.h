@@ -27,6 +27,7 @@ public:
     void setFather(std::shared_ptr<Proc> father);
     int getNumberOpenFile();
     std::list<std::string> getOpenFile();
+    std::list<std::string> getMappedFile();
 };
 
 

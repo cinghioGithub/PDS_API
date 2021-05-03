@@ -45,3 +45,7 @@ int Proc::getNumberOpenFile() {
 std::list<std::string> Proc::getOpenFile() {
     return this->openFile;
 }
+
+std::list<std::string> Proc::getMappedFile() {
+    return this->mappedFile;
+}

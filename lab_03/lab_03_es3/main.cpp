@@ -104,7 +104,7 @@ int main() {
     for (auto it = orderedOpenFile.begin(); it != orderedOpenFile.end(); ++it){
         std::cout << "Processo: " << it->get()->getPid() << ", con " << it->get()->getNumberOpenFile() << " file aperti" << std::endl;
     }
-
+    //ordinamento file aperti
     std::vector<std::string> orderedProcessi;
     std::map<std::string, int> tmp;
     for (auto it = processi.begin(); it != processi.end(); ++it){
@@ -125,7 +125,28 @@ int main() {
     std::sort(arr.begin(), arr.end(), [] (const auto &x, const auto &y) { return x.second < y.second; });
     for(auto it = arr.begin(); it != arr.end(); ++it){
         std::cout << it->first << " aperto in " << it->second << " processi" << std::endl;
-        c++;
+    }
+    //ordinamento file mappati
+    std::vector<std::string> orderedMappedFile;
+    std::map<std::string, int> tmp1;
+    for (auto it = processi.begin(); it != processi.end(); ++it){
+        std::list<std::string> listString = it->second->getMappedFile();
+        for(auto file = listString.begin(); file != listString.end(); ++file){
+            if(tmp1.find(*file) != tmp1.end()){
+                tmp1.find(*file)->second = tmp1.find(*file)->second + 1;
+            }
+            else{
+                tmp1.insert(std::make_pair(*file, 1));
+            }
+        }
+    }
+    std::vector<std::pair<std::string, int> > arr1;
+    for (const auto &item : tmp1) {
+        arr1.emplace_back(item);
+    }
+    std::sort(arr1.begin(), arr1.end(), [] (const auto &x, const auto &y) { return x.second < y.second; });
+    for(auto it = arr.begin(); it != arr.end(); ++it){
+        std::cout << it->first << " utilizzato in " << it->second << " processi" << std::endl;
     }
 
     return 0;
