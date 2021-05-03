@@ -49,3 +49,10 @@ std::list<std::string> Proc::getOpenFile() {
 std::list<std::string> Proc::getMappedFile() {
     return this->mappedFile;
 }
+
+std::string Proc::getState() {
+    if(this->status.find("State") != this->status.end()){
+        return this->status.find("State")->second.substr(0, 1);
+    }
+    return std::string{};
+}

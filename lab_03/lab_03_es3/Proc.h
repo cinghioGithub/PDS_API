@@ -28,6 +28,7 @@ public:
     int getNumberOpenFile();
     std::list<std::string> getOpenFile();
     std::list<std::string> getMappedFile();
+    std::string getState();
 };
 
 

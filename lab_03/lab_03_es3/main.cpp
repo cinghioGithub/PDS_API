@@ -105,21 +105,20 @@ int main() {
         std::cout << "Processo: " << it->get()->getPid() << ", con " << it->get()->getNumberOpenFile() << " file aperti" << std::endl;
     }
     //ordinamento file aperti
-    std::vector<std::string> orderedProcessi;
-    std::map<std::string, int> tmp;
+    std::map<std::string, int> orderedProcessi;
     for (auto it = processi.begin(); it != processi.end(); ++it){
         std::list<std::string> listString = it->second->getOpenFile();
         for(auto file = listString.begin(); file != listString.end(); ++file){
-            if(tmp.find(*file) != tmp.end()){
-                tmp.find(*file)->second = tmp.find(*file)->second + 1;
+            if(orderedProcessi.find(*file) != orderedProcessi.end()){
+                orderedProcessi.find(*file)->second = orderedProcessi.find(*file)->second + 1;
             }
             else{
-                tmp.insert(std::make_pair(*file, 1));
+                orderedProcessi.insert(std::make_pair(*file, 1));
             }
         }
     }
     std::vector<std::pair<std::string, int> > arr;
-    for (const auto &item : tmp) {
+    for (const auto &item : orderedProcessi) {
         arr.emplace_back(item);
     }
     std::sort(arr.begin(), arr.end(), [] (const auto &x, const auto &y) { return x.second < y.second; });
@@ -127,27 +126,31 @@ int main() {
         std::cout << it->first << " aperto in " << it->second << " processi" << std::endl;
     }
     //ordinamento file mappati
-    std::vector<std::string> orderedMappedFile;
-    std::map<std::string, int> tmp1;
+    std::map<std::string, int> orderedMappedFile;
     for (auto it = processi.begin(); it != processi.end(); ++it){
         std::list<std::string> listString = it->second->getMappedFile();
         for(auto file = listString.begin(); file != listString.end(); ++file){
-            if(tmp1.find(*file) != tmp1.end()){
-                tmp1.find(*file)->second = tmp1.find(*file)->second + 1;
+            if(orderedMappedFile.find(*file) != orderedMappedFile.end()){
+                orderedMappedFile.find(*file)->second = orderedMappedFile.find(*file)->second + 1;
             }
             else{
-                tmp1.insert(std::make_pair(*file, 1));
+                orderedMappedFile.insert(std::make_pair(*file, 1));
             }
         }
     }
     std::vector<std::pair<std::string, int> > arr1;
-    for (const auto &item : tmp1) {
+    for (const auto &item : orderedMappedFile) {
         arr1.emplace_back(item);
     }
     std::sort(arr1.begin(), arr1.end(), [] (const auto &x, const auto &y) { return x.second < y.second; });
     for(auto it = arr.begin(); it != arr.end(); ++it){
         std::cout << it->first << " utilizzato in " << it->second << " processi" << std::endl;
     }
-
+    //ordinamento processi stato
+    for (auto it = processi.begin(); it != processi.end(); ++it){
+        if(it->second->getState() == "I"){
+            std::cout << "Pid: " << it->second->getPid() << std::endl;
+        }
+    }
     return 0;
 }
