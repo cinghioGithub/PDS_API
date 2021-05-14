@@ -6,23 +6,49 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/Message.h
+/home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_01/DurationLogger.cpp
+DurationLogger.h
+/home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_01/DurationLogger.h
+
+/home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_01/DurationLogger.h
+iostream
+-
+
+/home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_01/Message.cpp
+iostream
+-
+cstring
+-
+Message.h
+/home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_01/Message.h
+
+/home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_01/Message.h
 string
 -
 
-/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/MessageStore.cpp
+/home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_01/MessageStore.cpp
 MessageStore.h
-/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/MessageStore.h
+/home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_01/MessageStore.h
 cstring
 -
 tuple
 -
 
-/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/MessageStore.h
+/home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_01/MessageStore.h
 Message.h
-/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/Message.h
+/home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_01/Message.h
 iostream
 -
 optional
 -
+
+/home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_01/main.cpp
+iostream
+-
+Message.h
+/home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_01/Message.h
+DurationLogger.h
+/home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_01/DurationLogger.h
+MessageStore.h
+/home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_01/MessageStore.h
 

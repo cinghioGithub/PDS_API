@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/DurationLogger.cpp" "/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/cmake-build-debug/CMakeFiles/lab_01.dir/DurationLogger.cpp.o"
-  "/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/Message.cpp" "/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/cmake-build-debug/CMakeFiles/lab_01.dir/Message.cpp.o"
-  "/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/MessageStore.cpp" "/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/cmake-build-debug/CMakeFiles/lab_01.dir/MessageStore.cpp.o"
-  "/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/main.cpp" "/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/cmake-build-debug/CMakeFiles/lab_01.dir/main.cpp.o"
+  "/home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_01/DurationLogger.cpp" "/home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_01/cmake-build-debug/CMakeFiles/lab_01.dir/DurationLogger.cpp.o"
+  "/home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_01/Message.cpp" "/home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_01/cmake-build-debug/CMakeFiles/lab_01.dir/Message.cpp.o"
+  "/home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_01/MessageStore.cpp" "/home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_01/cmake-build-debug/CMakeFiles/lab_01.dir/MessageStore.cpp.o"
+  "/home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_01/main.cpp" "/home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_01/cmake-build-debug/CMakeFiles/lab_01.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

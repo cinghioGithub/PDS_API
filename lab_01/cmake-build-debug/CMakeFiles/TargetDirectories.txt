@@ -1,3 +1,3 @@
-/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/cmake-build-debug/CMakeFiles/edit_cache.dir
-/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_01/cmake-build-debug/CMakeFiles/lab_01.dir
+/home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_01/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_01/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_01/cmake-build-debug/CMakeFiles/lab_01.dir
