@@ -31,7 +31,7 @@ int main() {
     cin >> numFigli;
 
     vector<pid_t> children{numFigli};
-    int **p2c;
+    int p2c[numFigli][2];
     int c2p[2];
     close(c2p[1]);
     filesystem::directory_iterator dir {"../tasks"};
@@ -40,10 +40,10 @@ int main() {
     set<filesystem::path> files{};
     bool foundStop = false;
 
-    p2c = (int **)malloc(sizeof(int *)*numFigli );
+    /*p2c = (int **)malloc(sizeof(int *)*numFigli );
     for(int i=0; i<numFigli; i++){
         p2c[i] = (int *) malloc(sizeof(int)*2);
-    }
+    }*/
 
     if(pipe(c2p) < 0){
         cout << "Errore pipe c2p" << endl;
