@@ -6,18 +6,9 @@
 #include <fstream>
 #include <queue>
 #include <set>
+#include <math.h>
 
 using namespace std;
-
-string myreadline(int fp, int max) {
-    char buf[max+1];
-    int i = 0;
-    do {
-        read(fp, buf + i, 1);
-    } while (++i<max && buf[i-1] != '\n');
-    buf[i-1] = '\0';
-    return buf;
-}
 
 class Task {
 private:
@@ -43,6 +34,23 @@ public:
     }
 };
 
+vector<int> getPrime(int start, int end){
+    vector<int> prime{};
+    for(int num=start; num<=end; num++){
+        int c = 0;
+        int max = (int)sqrt(num);
+        for(int j=1; j<=max; j++){
+            if(num%j == 0){
+                c++;
+            }
+        }
+        if(c == 1){
+            prime.push_back(num);
+        }
+    }
+    return prime;
+}
+
 int main() {
     int numFigli;
     int index;
@@ -59,29 +67,29 @@ int main() {
     set<filesystem::path> files{};
     bool foundStop = false;
 
-    if(pipe(c2p) < 0){
-        cout << "Errore pipe c2p" << endl;
-        exit(-1);
-    }
-
     for(int i=0; i<numFigli; i++){
+        if(pipe(c2p) < 0){
+            cout << "Errore pipe c2p" << endl;
+            exit(-1);
+        }
         if(pipe(p2c[i]) < 0){
             cout << "Errore pipe p2c[" << i << "]" << endl;
             exit(-1);
         }
+
         res = fork();
         if(res == -1) {
             cout << "Errore fork" << endl;
             exit(-1);
-        } else if (res == 0){
+        } else if (res == 0){   //child
             close(c2p[0]);
             close(p2c[i][1]);
             index = i;
             //cout << i << endl;
             break;
-        } else{
+        } else{         //parent
             close(p2c[i][0]);
-            if(i==0) close(c2p[1]);
+            close(c2p[1]);
             //waitpid(res, nullptr, 0);
             children.push_back(res);
         }
@@ -119,23 +127,42 @@ int main() {
                 write(p2c[free_child][1], (void *) &start, sizeof(int));
                 write(p2c[free_child][1], (void *) &end, sizeof(int));
                 queue.pop();
+                int val = 0;
+                while(val != -1){
+                    int n = read(c2p[0], (void *) &val, sizeof(int));
+                    cout << "numero primo: " << val << endl;
+                }
             }
             //exit(0);
-            wait(nullptr);
         } else{
+            int self = index;
+            int n = write(c2p[1], (void *) &self, sizeof(int));
+            cout << "figlio " << self << " scritto: " << n << endl;
             while(1){
-                cout << index << endl;
-                int self = index;
-                int n = write(c2p[1], (void *) &self, sizeof(int));
-                cout << "figlio " << self << " scritto: " << n << endl;
+                cout << "id filgio: " << index << endl;
+                //int self = index;
+                //int n = write(c2p[1], (void *) &self, sizeof(int));
+                //cout << "figlio " << self << " scritto: " << n << endl;
                 int start;
-                read(p2c[self][0], (void *) &start, sizeof(int) );
+                read(p2c[index][0], (void *) &start, sizeof(int) );
                 int end;
-                read(p2c[self][0], (void *) &end, sizeof(int) );
-                cout << "filgio: " << start << " " << end << endl;
+                read(p2c[index][0], (void *) &end, sizeof(int) );
+                cout << "figlio[" << index << "]: " << start << " " << end << endl;
+
+                vector<int> prime = getPrime(start, end);
+
+                for(int v : prime){
+                    write(c2p[1], (void *) &v, sizeof(int));
+                }
+                int fine = -1;
+                int n = write(c2p[1], (void *) &fine, sizeof(int));
+                write(c2p[1], (void *) &self, sizeof(int));
             }
         }
     }
+
+    int free_child;
+    int n = read(c2p[0], (void *) &free_child, sizeof(int));
 
     return 0;
 }
