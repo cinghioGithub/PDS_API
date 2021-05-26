@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_04/lab_04_es2/main.cpp
+iostream
+-
+unistd.h
+-
+vector
+-
+sys/wait.h
+-
+filesystem
+-
+fstream
+-
+queue
+-
+set
+-
+math.h
+-
+
