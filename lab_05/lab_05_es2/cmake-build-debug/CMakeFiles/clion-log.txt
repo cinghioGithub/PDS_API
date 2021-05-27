@@ -1,0 +1,4 @@
+/home/enrico/Documents/polito/clion-2021.1.1/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_05/lab_05_es2
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_05/lab_05_es2/cmake-build-debug

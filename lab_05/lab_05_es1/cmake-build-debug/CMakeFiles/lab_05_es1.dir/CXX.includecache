@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/enrico/Documents/polito/programmazione_di_sistema/PDS_API/lab_05/lab_05_es1/main.cpp
+iostream
+-
+mutex
+-
+

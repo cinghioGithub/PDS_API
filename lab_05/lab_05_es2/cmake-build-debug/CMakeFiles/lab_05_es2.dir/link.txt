@@ -1,0 +1,1 @@
+/usr/bin/c++ -g  -pthread CMakeFiles/lab_05_es2.dir/main.cpp.o -o lab_05_es2 
