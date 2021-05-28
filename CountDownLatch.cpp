@@ -1,10 +1,12 @@
 #include <iostream>
 #include <mutex>
+#include <condition_variable>
+#include <thread>
 
 class CountDownLatch{
     int count;
     std::mutex m;
-    std::contidion_variable cv;
+    std::condition_variable cv;
 
 public:
     CountDownLatch(int initialCount): count(initialCount){}
@@ -32,14 +34,14 @@ public:
         std::lock_guard<std::mutex> lg(m);
         return count;
     }
-}
+};
 
 int main(){
     CountDownLatch cl(3);
     for(int i=0; i<5; i++){
         std::thread t([i, &cl]() {
             cl.await();
-            std::count << "Thread " << i << " finished" << std::endl;
+            std::cout << "Thread " << i << " finished" << std::endl;
         });
         t.detach();
     }
@@ -51,5 +53,6 @@ int main(){
         std::cout << "Current count is " << cl.getCount() << std::endl;
         /*il flush dovrebbe già farlo std::endl*/
         std::cout.flush();
+        if(cl.getCount() == 0) break;
     }
 }
