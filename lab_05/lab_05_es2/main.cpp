@@ -2,18 +2,28 @@
 #include <thread>
 #include <unistd.h>
 #include <vector>
+#include <mutex>
+#include <condition_variable>
 
 int count=0;
 std::vector<int> vect{};
-int f1Tof2[2];
-int f2Tof1[2];
+bool ready = false;
+std::mutex m;
+std::condition_variable cv;
+//int f1Tof2[2];
+//int f2Tof1[2];
 
 void f1(){
     char buff[1];
     for(int i=0; i<1000000; i++){
-        read(f2Tof1[0], buff, 1);
+        //read(f2Tof1[0], buff, 1);
+        std::unique_lock<std::mutex> ul(m);
+        cv.wait(ul, [](){return !ready;});
         count++;
-        write(f1Tof2[1], "a", 1);
+        //std::cerr << "prodotto " << count << " i = " << i << std::endl;
+        ready = true;
+        cv.notify_all();
+        //write(f1Tof2[1], "a", 1);
     }
 }
 
@@ -21,9 +31,14 @@ void f2(){
     int somma=0;
     char buff[1];
     for(int i=0; i<1000000; i++){
-        read(f1Tof2[0], buff, 1);
+        //read(f1Tof2[0], buff, 1);
+        std::unique_lock<std::mutex> ul(m);
+        cv.wait(ul, [](){return ready;});
         somma += count % 43;
-        write(f2Tof1[1], "a", 1);
+        //std::cerr << "consumato " << count << " i = " << i << std::endl;
+        ready = false;
+        cv.notify_all();
+        //write(f2Tof1[1], "a", 1);
     }
     std::cout << "somma resti = " << somma << std::endl;
 }
@@ -48,11 +63,11 @@ void f4(){
 }
 
 int main() {
-    pipe(f1Tof2);
-    pipe(f2Tof1);
+    //pipe(f1Tof2);
+    //pipe(f2Tof1);
 
     f3(); //check the result
-    write(f2Tof1[1], "a", 1);
+    //write(f2Tof1[1], "a", 1);
     auto start = std::chrono::high_resolution_clock::now();
     std::thread t1(f1);
     std::thread t2(f2);
