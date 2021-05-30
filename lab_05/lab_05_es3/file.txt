@@ -1,0 +1,8 @@
+Per testare la classe realizzare un programma che cerca una stringa in un file di testo. Il
+programma ha 8 thread che possono cercare la stringa ognuno su una linea differente, ma
+al massimo possono essere eseguiti 4 thread contemporaneamente.
+Verificare tramite una variabile condivisa che non ci siano mai più di 4 thread in esecuzione
+contemporaneamente.
+Un file server riceve delle richieste di trasferimento file da diverse sorgenti, da gestire
+sequenzialmente in modo da non eseguire più operazioni di copia contemporaneamente.
+Ogni sorgente è simulata da un file di n linee e il seguente formato
