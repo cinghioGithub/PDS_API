@@ -1,0 +1,1 @@
+/usr/bin/c++.exe -g  -Wl,--enable-auto-import -pthread CMakeFiles/thread_pool.dir/main.cpp.o  -o thread_pool.exe -Wl,--out-implib,libthread_pool.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
