@@ -6,7 +6,7 @@
 std::queue<std::packaged_task<void(int)>> queue_job;
 std::mutex queue_mu;
 std::condition_variable queue_cv;
-std::mutex cout_mu;
+//std::mutex cout_mu;
 std::atomic<bool> end = false;
 
 void thread_handler(int i){
@@ -36,11 +36,12 @@ int main() {
         threads.push_back(std::move(t));
     }
 
-    for(int i=0; i<2*processor_count; i++){
+    for(int i=0; i<3*processor_count; i++){
         std::lock_guard<std::mutex> lg(queue_mu);
-        queue_job.push(std::packaged_task<void(int)> ([](int a) {
-            std::lock_guard<std::mutex> lg(cout_mu);  //lock per effettuare stampe atomiche
-            std::cout << "Task eseguito dal thread: " << a << std::endl;
+        queue_job.push(std::packaged_task<void(int)> ([i](int a) {
+            //std::lock_guard<std::mutex> lg(cout_mu);  //lock per effettuare stampe atomiche
+            std::cout << "Task [" << i << "] eseguito dal thread: " << a << std::endl;
+            //std::cerr << i << a << std::endl;
         }));
         queue_cv.notify_all();
     }
