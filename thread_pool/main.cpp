@@ -18,7 +18,8 @@ void thread_handler(int i){
             task(i);
         }
         std::unique_lock<std::mutex> ul(queue_mu);
-        queue_cv.wait(ul, [](){return !queue_job.empty();});
+        queue_cv.wait(ul, [](){return !queue_job.empty() || end;});
+        if(end && queue_job.empty()) break;
         task = std::move(queue_job.front());
         queue_job.pop();
         if(first) first = false;
@@ -35,7 +36,7 @@ int main() {
         threads.push_back(std::move(t));
     }
 
-    for(int i=0; i<20*processor_count; i++){
+    for(int i=0; i<2*processor_count; i++){
         std::lock_guard<std::mutex> lg(queue_mu);
         queue_job.push(std::packaged_task<void(int)> ([](int a) {
             std::lock_guard<std::mutex> lg(cout_mu);  //lock per effettuare stampe atomiche
@@ -43,6 +44,8 @@ int main() {
         }));
         queue_cv.notify_all();
     }
+
+    end = true;
 
     for(auto & thread : threads){
         thread.join();
