@@ -64,10 +64,10 @@ RM = /usr/bin/cmake.exe -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/thread_pool
+CMAKE_SOURCE_DIR = /cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_06/thread_pool
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/thread_pool/cmake-build-debug
+CMAKE_BINARY_DIR = /cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_06/thread_pool/cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -94,14 +94,14 @@ clean: CMakeFiles/thread_pool.dir/clean
 CMakeFiles/thread_pool.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/thread_pool.dir/build.make CMakeFiles/thread_pool.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/thread_pool.dir/build.make CMakeFiles/thread_pool.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/thread_pool/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target thread_pool"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_06/thread_pool/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target thread_pool"
 .PHONY : CMakeFiles/thread_pool.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/thread_pool.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/thread_pool/cmake-build-debug/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_06/thread_pool/cmake-build-debug/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/thread_pool.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/thread_pool/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/c/Users/Enrico/Documents/Polito/programmazione_di_sistema/API/workspace/lab_06/thread_pool/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/thread_pool.dir/rule
 
 # Convenience name for target.
